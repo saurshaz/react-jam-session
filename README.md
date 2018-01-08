@@ -1,0 +1,4 @@
+- React 
+- React Component props
+- React Component state
+- App Redux

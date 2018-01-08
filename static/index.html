@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello</title>
+  <script type="text/javascript">
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = () => {
+          if (xhttp.readyState == 4) {
+              console.log("ready state is: 4");
+              if(xhttp.status == 200) {
+                  console.log("all good...");
+              }
+          }
+        };
+        var body = {"tripId":'1281',"baseAmount":'340',"channel":"b2b"};
+        xhttp.open("POST", "http://api.localtrip.in/api/v1/computecharges");
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        // xhttp.setRequestHeader("Access-Control-Allow-Origin","http://localhost:3000/");
+      xhttp.send(body);
+    
+  </script>
+</head>
+<body>
+  Testing
+</body>
+</html>

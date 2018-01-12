@@ -1,36 +1,43 @@
 import React, {Component, PropType} from 'react';
 import './style.css';
-import AnotherComp from '../AnotherComp';
+// import AnotherComp from '../AnotherComp';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import counter from '../../actions/counter';
 
-export default class Counter extends Component {
-  constructor(){
-  	super()
-  	this.state = {
-  		totalClicks:101
-  	}
-  }
-
-
+class Counter extends Component {
   render() {
-  	const {increment, decrement, store} = this.props;
-  	const {count} = store;
-
-
-
+  	const {increment, decrement} = this.props.counter;
+    // console.log(...count)
     return (
     	<div>
     		<button onClick={increment}> ++ </button>
     		<button onClick={decrement}> -- </button>
-	    	<div> Counter {count} </div>
-	    	<div> Total Clicks Counter {this.state.totalClicks} </div>
+	    	<div> Counter <div>{this.props.counter.count}</div> </div>
+	    	{/*<div> Total Clicks Counter {this.state.totalClicks} </div>*/}
 
 
-	    	<section> <AnotherComp store={store} totalClicks={this.state.totalClicks} /> </section>
+	    	{/*<section> <AnotherComp totalClicks={this.state.totalClicks} /> </section>*/}
     	</div>
     )
   }
 
 }
+
+const mapStateToProps = (state) => ({
+    store: {
+      counter: state.counter,
+    }
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  counter: bindActionCreators(counter, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  Counter
+);
+
 
 
 // // pure component

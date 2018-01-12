@@ -3,13 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import AnotherComp from './components/AnotherComp';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as counter from '../actions/counter';
-
-
-
-
 //   props, redux
 class App extends Component {
 
@@ -107,3 +100,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+// redux 
+// 

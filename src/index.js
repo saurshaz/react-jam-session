@@ -8,7 +8,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 // import * as rootReducer from './reducers';
 import { Provider } from 'react-redux';
 // import thunk from 'redux-thunk';
-import rootReducer  from './reducers/counter';
+import rootReducer  from './reducers/index';
 
 const initialState = {
 	counter : 
@@ -19,7 +19,6 @@ const initialState = {
 
 // store config
 function configureStore(initialState) {
-  // console.log('loadState:', loadState());
   return createStore(
   	rootReducer,
     initialState,

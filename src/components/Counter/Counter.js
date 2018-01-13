@@ -7,32 +7,25 @@ import counter from '../../actions/counter';
 
 class Counter extends Component {
 
-  componentDidMount(){
-    this.props.store.subscribe(this.render);
-  }
-
   render() {
-  	const {increment, decrement} = this.props.counter;
+  	const {decrement, increment} = this.props.counter;
     // console.log(...count)
     return (
     	<div>
     		<button onClick={increment}> ++ </button>
     		<button onClick={decrement}> -- </button>
-	    	<div> Counter <div>{this.props.counterState && this.props.counterState.count}</div> </div>
-	    	{/*<div> Total Clicks Counter {this.state.totalClicks} </div>*/}
-
-
-	    	{/*<section> <AnotherComp totalClicks={this.state.totalClicks} /> </section>*/}
-    	</div>
+	    	<div> Counter 
+          <div>{this.props.counterState && this.props.counterState.count}</div> 
+        </div>
+	    </div>
     )
   }
 
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
-      counterState: state.counter,
+    counterState: state.counter,
   }
 };
 

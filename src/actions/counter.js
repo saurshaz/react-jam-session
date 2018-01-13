@@ -1,8 +1,12 @@
 
-const increment = (payload) => ({
-  type: 'INCREMENT',
-  payload,
-});
+const increment = (payload) => {
+	// setTimeout(1000, () => {
+	  	return {	
+		  	type: 'INCREMENT',
+	  		payload,
+		};
+	// })
+}
 
 
 const decrement = (payload) => ({

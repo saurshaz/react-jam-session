@@ -7,27 +7,15 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 // import * as rootReducer from './reducers';
 import { Provider } from 'react-redux';
+// import thunk from 'redux-thunk';
 import rootReducer  from './reducers/counter';
+
 const initialState = {
 	counter : 
 		{ 
 			count : 13
 		}
 }
-
-
-
-
-// import * as rootReducer from './store'
-
-// const storeGlobal = () => {
-//   return createStore(rootReducer);
-// }
-
-// // Create a Redux store holding the state of your app.
-// // Its API is { subscribe, dispatch, getState }.
-// let store = storeGlobal()
-
 
 // store config
 function configureStore(initialState) {
@@ -44,11 +32,7 @@ function configureStore(initialState) {
 // store initialization
 const store = configureStore(initialState);
 
-
-
-render(
-	<Provider store={store}>
-		<Counter/>
-	</Provider>, 
+render(<Counter store={store}/>,
 	document.getElementById('root')
 );
+

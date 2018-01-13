@@ -6,6 +6,11 @@ import { bindActionCreators } from 'redux';
 import counter from '../../actions/counter';
 
 class Counter extends Component {
+
+  componentDidMount(){
+    this.props.store.subscribe(this.render);
+  }
+
   render() {
   	const {increment, decrement} = this.props.counter;
     // console.log(...count)
@@ -13,7 +18,7 @@ class Counter extends Component {
     	<div>
     		<button onClick={increment}> ++ </button>
     		<button onClick={decrement}> -- </button>
-	    	<div> Counter <div>{this.props.counter.count}</div> </div>
+	    	<div> Counter <div>{this.props.counterState && this.props.counterState.count}</div> </div>
 	    	{/*<div> Total Clicks Counter {this.state.totalClicks} </div>*/}
 
 
@@ -24,11 +29,15 @@ class Counter extends Component {
 
 }
 
-const mapStateToProps = (state) => ({
-    store: {
-      counter: state.counter,
-    }
-});
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+      counterState: state.counter,
+  }
+};
+
+
+
 
 const mapDispatchToProps = (dispatch) => ({
   counter: bindActionCreators(counter, dispatch),
